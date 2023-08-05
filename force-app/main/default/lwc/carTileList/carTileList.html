@@ -1,0 +1,37 @@
+<template>
+    <lightning-card title="Cars Available" icon-name="standard:account">
+        <div class="slds-var-p-around_medium">
+            <template if:true={cars.length}>
+                <lightning-layout multiple-rows>
+
+                    <template for:each={cars} for:item="car">
+                        <lightning-layout-item key={car.Id} size="12" medium-device-size="6" large-device-size="4"
+                            padding="around-small">
+                            <div
+                                class="custom-box slds-box slds-p-around_medium slds-text-align_center layout-item-container"
+                                data-id = {car.Id}
+                                onclick={carClickHandler}>
+                                <img src={car.Picture_URL__c} alt="Car picture">
+                                <h2 class="title">
+                                    <a>{car.Name}</a>
+                                </h2>
+                                <h2 class="currency">
+                                    MSRP :
+                                    &nbsp;
+                                    <lightning-formatted-number value={car.MSRP__c} format-style="currency"
+                                        currency-code="USD" currency-display-as="code">
+                                    </lightning-formatted-number>
+                                </h2>
+                            </div>
+                        </lightning-layout-item>
+                    </template>
+
+                </lightning-layout>
+            </template>
+
+            <template if:false={cars.length}>
+                <c-car-place-holder message="There are no cars matching your current selection"></c-car-place-holder>
+            </template>
+        </div>
+    </lightning-card>
+</template>

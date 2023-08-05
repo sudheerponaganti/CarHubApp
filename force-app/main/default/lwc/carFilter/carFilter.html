@@ -1,0 +1,65 @@
+<template>
+    <lightning-card title="Filters" icon-name="standard:calibration">
+      <div class="slds-var-m-horizontal_medium">
+        <lightning-input
+            label="Search key"
+            type="search"
+            value={filters.searchKey}
+            onchange={handleSearchKeyChange}
+        ></lightning-input>
+  <div>
+    <lightning-slider label="Max Price" 
+    step="100"
+    min="0"
+    max="999999"
+    value={filters.maxPrice}
+    onchange={handleMaxPriceChange}
+></lightning-slider>
+  </div>
+        <div>
+            <h2>Category</h2>
+            <template if:true={categories.data}>
+
+                <template for:each={categories.data.values} for:item="category">
+                    <lightning-input 
+                    key={category.value}
+                    type="checkbox" 
+                    label={category.label}
+                    data-name = "categories"
+                    data-value = {category.value}
+                    checked 
+                    onchange={handleCheckBox}>
+                    </lightning-input>
+                </template>
+                
+            </template>
+            <template if:true={categories.error}>
+                <div>{categoryError}</div>
+            </template>
+
+
+        </div>
+        <div>
+            <h2>Make</h2>
+            <template if:true={makeType.data}>
+
+                <template for:each={makeType.data.values} for:item="make">
+                    <lightning-input 
+                    key={make.value}
+                    type="checkbox" 
+                    label={make.label}
+                    data-name = "makeType"
+                    data-value = {make.value}
+                    checked 
+                    onchange={handleCheckBox}>
+                    </lightning-input>
+                </template>
+                
+            </template>
+            <template if:true={makeType.error}>
+                <div>{makeError}</div>
+            </template>
+        </div>
+      </div>
+    </lightning-card>
+</template>

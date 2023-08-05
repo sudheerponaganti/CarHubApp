@@ -1,0 +1,17 @@
+lightning-card{
+    --slds-c-card-color-background : var(--lwc-colorBackground);
+}
+
+.layout-item-container{
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.25);
+}
+
+.title{
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.currency{
+    font-weight : 500;
+}
